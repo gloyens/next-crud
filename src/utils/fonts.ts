@@ -6,3 +6,7 @@
 // });
 
 // export const fontClasses = [example.variable].join(" ");
+
+// Remember to do the following in layout.ts:
+// import { fontClasses } from '@/utils/fonts'
+// <html lang="en" className={fontClasses}>
