@@ -1,0 +1,16 @@
+li.LinkBoxWrapper {
+  list-style-type: none;
+  border: 2px dotted black;
+  padding: 32px;
+
+  position: relative;
+  transition: 0.2s;
+}
+
+li.LinkBoxWrapper img {
+  object-fit: cover;
+}
+
+li.LinkBoxWrapper:hover {
+  transform: scale(1.1);
+}
