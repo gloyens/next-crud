@@ -1,0 +1,7 @@
+li.ItemWrapper {
+  list-style-type: none;
+  border: 2px dotted black;
+  padding: 32px;
+
+  position: relative;
+}

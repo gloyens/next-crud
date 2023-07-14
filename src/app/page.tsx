@@ -1,10 +1,11 @@
-import LinkList from "@/components/LinkList";
+import ItemList from '@/components/ItemList';
+import { PageWrapper } from './styles';
 
 export default function Home() {
   return (
-    <main>
-      <h1>HELLO WORLD!</h1>
-      <LinkList />
-    </main>
+    <PageWrapper>
+      <h1>Hello World</h1>
+      <ItemList />
+    </PageWrapper>
   )
 }
