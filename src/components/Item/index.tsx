@@ -1,28 +1,37 @@
-import { kv } from "@vercel/kv";
+"use client";
+
 import { ItemWrapper } from "./styles";
+import { deleteItem } from "@/utils/server-actions";
+import { upvoteItem } from "@/utils/server-actions";
 
 interface Props {
-  title: string;
+  name: string;
+  status: string;
+  votes: string;
+  url: string;
 }
 
-async function getData() {
-  try {
-    const data = await kv.hgetall('user:me');
-    console.log(data);
-    return data;
-  } catch (error) {
-    throw new Error('Failed to fetch data')
-  }
-}
-
-export default async function Item({ title }: Props) {
-  const data = await getData();
-
+export default async function Item({ name, status, votes, url }: Props) {
   return (
     <ItemWrapper>
-      <h2>{title}</h2>
-      <p>ID: {data.id}</p>
-      <p>Email: {data.email}</p>
+      <h2>{name}</h2>
+      <p>Status: {status}</p>
+      <p>Votes: {votes}</p>
+      <p>URL: {url}</p>
+      <button
+        onClick={async () => {
+          upvoteItem(name, Number(votes));
+        }}
+      >
+        Upvote
+      </button>
+      <button
+        onClick={async () => {
+          deleteItem(name);
+        }}
+      >
+        Delete
+      </button>
     </ItemWrapper>
   );
 }
