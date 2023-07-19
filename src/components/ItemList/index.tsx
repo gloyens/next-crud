@@ -1,6 +1,7 @@
 import { kv } from "@vercel/kv";
 import Item from "../Item";
 import { ItemListWrapper } from "./styles";
+import { ItemData } from "@/utils/types";
 
 export default async function ItemList() {
   // Bring data to frontend
@@ -9,9 +10,11 @@ export default async function ItemList() {
   const data = await Promise.all(
     names.map(async (name) => {
       const itemData = await kv.hgetall(name);
-      return itemData! as { [key: string]: string };
+      return itemData! as ItemData;
     })
   );
+
+  data.sort((a, b) => parseInt(b.votes) - parseInt(a.votes));
 
   return (
     <ItemListWrapper>

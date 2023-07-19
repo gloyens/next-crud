@@ -1,5 +1,6 @@
-export type Item = {
+export type ItemData = {
   name: string;
-  done: boolean;
-  votes: number;
+  status: string;
+  votes: string;
+  url: string;
 }

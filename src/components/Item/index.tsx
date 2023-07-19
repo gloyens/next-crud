@@ -12,6 +12,8 @@ import { upvoteItem } from "@/utils/server-actions";
 import { FaCircleCheck, FaClock, FaHeart } from "react-icons/fa6";
 import DeleteButton from "@/components/DeleteButton";
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { useAppContext } from "@/utils/appContext";
 
 interface Props {
   name: string;
@@ -22,6 +24,28 @@ interface Props {
 
 export default function Item({ name, status, votes, url }: Props) {
   const path = usePathname();
+  const { isUpvoting, setIsUpvoting } = useAppContext();
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (isUpvoting) {
+      timer = setTimeout(() => {
+        setIsUpvoting(false);
+      }, 5000);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isUpvoting]);
+
+  const handleUpvoteClick = async () => {
+    if (!isUpvoting) {
+      setIsUpvoting(true);
+      upvoteItem(name, Number(votes));
+    }
+  };
 
   return (
     <ItemWrapper>
@@ -41,11 +65,7 @@ export default function Item({ name, status, votes, url }: Props) {
           {path === "/admin" && <DeleteButton itemName={name} />}
         </ContentRow>
         <ContentRow>
-          <Upvote
-            onClick={async () => {
-              upvoteItem(name, Number(votes));
-            }}
-          >
+          <Upvote onClick={handleUpvoteClick} disabled={isUpvoting}>
             <FaHeart />
           </Upvote>
           <h3>{votes}</h3>

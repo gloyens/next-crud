@@ -40,6 +40,15 @@ span.Upvote:hover {
   transform: scale(1.4);
 }
 
+span.Upvote_disabled {
+  color: #bbb;
+  transition: 0.2s;
+}
+
+span.Upvote_disabled:hover {
+  cursor: not-allowed;
+}
+
 div.ContentRow h3 {
   font-size: 16px;
 }

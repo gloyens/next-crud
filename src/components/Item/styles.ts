@@ -16,6 +16,11 @@ export const ContentRow = styled("div", {
 
 export const Upvote = styled("span", {
   css: css.Upvote,
+  variants: {
+    disabled: {
+      true: css.Upvote_disabled,
+    },
+  },
 });
 
 export const InProgressIcon = styled("span", {
