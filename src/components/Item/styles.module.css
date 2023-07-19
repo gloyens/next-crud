@@ -1,7 +1,89 @@
 li.ItemWrapper {
+  display: flex;
+  flex-direction: column;
+
   list-style-type: none;
   border: 2px dotted black;
-  padding: 32px;
+  padding: 18px 24px;
 
   position: relative;
+}
+
+li.ItemWrapper h2 {
+  text-transform: capitalize;
+}
+
+div.InfoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+div.ContentRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Upvote */
+
+span.Upvote {
+  display: flex;
+  align-items: center;
+
+  color: #f66;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+span.Upvote:hover {
+  transform: scale(1.4);
+}
+
+div.ContentRow h3 {
+  font-size: 16px;
+}
+
+/* Delete */
+
+a.DeleteButton {
+  color: #bbb;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  height: 24px;
+
+  transition: 0.2s;
+}
+
+a.DeleteButton:hover {
+  color: #f66;
+}
+
+div.ConfirmDelete {
+  display: none;
+}
+
+div.ConfirmDelete_visible {
+  display: flex;
+  gap: 8px;
+}
+
+div.ConfirmDelete button {
+  padding: 2px 4px;
+}
+
+span.InProgressIcon {
+  display: flex;
+  align-items: center;
+
+  color: #bbb;
+}
+
+span.DoneIcon {
+  display: flex;
+  align-items: center;
+
+  color: #60b860;
 }

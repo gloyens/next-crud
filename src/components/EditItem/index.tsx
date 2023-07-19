@@ -1,6 +1,5 @@
 import { kv } from "@vercel/kv";
 import { EditItemWrapper } from "./styles";
-import { v4 as uuidv4 } from "uuid";
 import { revalidatePath } from "next/cache";
 
 async function createItem(formData: FormData) {
