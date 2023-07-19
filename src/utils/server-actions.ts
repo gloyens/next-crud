@@ -1,14 +1,14 @@
 "use server";
 
-import { DEL, VOTE } from "@/app/api/route";
-import { revalidatePath } from "next/cache";
+import { kv } from "@vercel/kv";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function deleteItem(name:string) {
-  DEL(name);
-  revalidatePath("");
+  await kv.del(name);
+  revalidateTag("");
 }
 
-export async function upvoteItem(name:string, votes:number) {
-  VOTE(name, votes + 1);
+export async function upvoteItem(name:string, total:number) {
+  await kv.hset(name, {votes: total + 1});
   revalidatePath("");
 }

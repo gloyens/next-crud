@@ -6,7 +6,7 @@ import { deleteItem } from "@/utils/server-actions";
 import { FaTrash } from "react-icons/fa6";
 
 
-export default function DeleteButton(itemName:any) {
+export default function DeleteButton(item:any) {
   const [popupVisible, setPopupVisible] = useState(false);
 
   const handlePopup = () => {
@@ -24,7 +24,7 @@ export default function DeleteButton(itemName:any) {
         <p>Are you sure?</p>
         <button
           onClick={() => {
-            deleteItem(itemName);
+            deleteItem(item.itemName);
             setPopupVisible(false);
           }}
         >
