@@ -2,16 +2,6 @@ import { kv } from "@vercel/kv";
 import Item from "../Item";
 import { ItemListWrapper } from "./styles";
 
-async function getData(index: number, field: string) {
-  try {
-    const items = await kv.scan(0);
-    const data = await kv.hget(items[1][index], field);
-    return data;
-  } catch (error) {
-    throw new Error("Failed to fetch data: " + error);
-  }
-}
-
 export default async function ItemList() {
   // Bring data to frontend
   const array = await kv.scan(0);

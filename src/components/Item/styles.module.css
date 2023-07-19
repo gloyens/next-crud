@@ -3,8 +3,8 @@ li.ItemWrapper {
   flex-direction: column;
 
   list-style-type: none;
-  border: 2px dotted black;
-  padding: 18px 24px;
+  border-top: 2px dotted black;
+  padding: 20px 24px 8px;
 
   position: relative;
 }
@@ -42,36 +42,6 @@ span.Upvote:hover {
 
 div.ContentRow h3 {
   font-size: 16px;
-}
-
-/* Delete */
-
-a.DeleteButton {
-  color: #bbb;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  height: 24px;
-
-  transition: 0.2s;
-}
-
-a.DeleteButton:hover {
-  color: #f66;
-}
-
-div.ConfirmDelete {
-  display: none;
-}
-
-div.ConfirmDelete_visible {
-  display: flex;
-  gap: 8px;
-}
-
-div.ConfirmDelete button {
-  padding: 2px 4px;
 }
 
 span.InProgressIcon {

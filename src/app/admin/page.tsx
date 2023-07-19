@@ -5,10 +5,10 @@ import { cookies } from 'next/headers'
 import { PageWrapper } from "../styles";
 
 export default function Admin() {
-  if (cookies().get("passwordCookie")?.value === "password") {
+  if (cookies().get("passwordCookie")?.value === process.env.ADMIN_PASSWORD) {
     return (
       <PageWrapper>
-        <h1>Icon Votes (Admin)</h1>
+        <h1>Admin Panel</h1>
         <EditItem />
         <ItemList />
       </PageWrapper>
@@ -17,7 +17,6 @@ export default function Admin() {
     return (
       <PageWrapper>
         <h1>Access denied</h1>
-        <p>bitch</p>
       </PageWrapper>
     )
   }

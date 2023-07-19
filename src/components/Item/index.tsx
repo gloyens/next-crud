@@ -1,8 +1,6 @@
 "use client";
 
 import {
-  DeleteButton,
-  ConfirmDelete,
   ItemWrapper,
   InfoContainer,
   InProgressIcon,
@@ -10,9 +8,10 @@ import {
   ContentRow,
   Upvote,
 } from "./styles";
-import { deleteItem, upvoteItem } from "@/utils/server-actions";
-import { useState } from "react";
-import { FaCircleCheck, FaClock, FaHeart, FaTrash } from "react-icons/fa6";
+import { upvoteItem } from "@/utils/server-actions";
+import { FaCircleCheck, FaClock, FaHeart } from "react-icons/fa6";
+import DeleteButton from "@/components/DeleteButton";
+import { usePathname } from 'next/navigation';
 
 interface Props {
   name: string;
@@ -22,11 +21,7 @@ interface Props {
 }
 
 export default function Item({ name, status, votes, url }: Props) {
-  const [popupVisible, setPopupVisible] = useState(false);
-
-  const handlePopup = () => {
-    setPopupVisible(!popupVisible);
-  };
+  const path = usePathname();
 
   return (
     <ItemWrapper>
@@ -43,6 +38,7 @@ export default function Item({ name, status, votes, url }: Props) {
               <FaCircleCheck />
             </DoneIcon>
           )}
+          {path === "/admin" && <DeleteButton itemName={name} />}
         </ContentRow>
         <ContentRow>
           <Upvote
@@ -63,23 +59,6 @@ export default function Item({ name, status, votes, url }: Props) {
         ) : (
           <p></p>
         )}
-        {!popupVisible && (
-          <DeleteButton onClick={handlePopup} title="Delete">
-            <FaTrash />
-          </DeleteButton>
-        )}
-        <ConfirmDelete visible={popupVisible}>
-          <p>Are you sure?</p>
-          <button
-            onClick={() => {
-              deleteItem(name);
-              setPopupVisible(false);
-            }}
-          >
-            Yes
-          </button>
-          <button onClick={handlePopup}>No</button>
-        </ConfirmDelete>
       </InfoContainer>
     </ItemWrapper>
   );

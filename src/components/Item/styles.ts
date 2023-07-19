@@ -25,16 +25,3 @@ export const InProgressIcon = styled("span", {
 export const DoneIcon = styled("span", {
   css: css.DoneIcon,
 });
-
-export const DeleteButton = styled("a", {
-  css: css.DeleteButton,
-});
-
-export const ConfirmDelete = styled("div", {
-  css: css.ConfirmDelete,
-  variants: {
-    visible: {
-      true: css.ConfirmDelete_visible,
-    },
-  },
-});
