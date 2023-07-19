@@ -3,8 +3,6 @@ main.PageWrapper {
   width: 100%;
   max-width: 640px;
   margin: auto;
-
-  /* border: 1px solid red; */
 }
 
 main.PageWrapper h1 {
