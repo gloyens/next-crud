@@ -5,8 +5,7 @@ import { ItemData } from "@/utils/types";
 
 export default async function ItemList() {
   // Bring data to frontend
-  const array = await kv.scan(0);
-  const names = array[1];
+  const names = await kv.keys("*");
   const data = await Promise.all(
     names.map(async (name) => {
       const itemData = await kv.hgetall(name);

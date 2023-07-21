@@ -14,7 +14,6 @@ export default function Filter() {
       : [...filter, filterItem];
 
     setFilter(updatedFilter);
-    console.log(updatedFilter);
   };
 
   return (
