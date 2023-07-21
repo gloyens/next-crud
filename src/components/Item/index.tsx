@@ -12,7 +12,7 @@ import { upvoteItem } from "@/utils/server-actions";
 import { FaCircleCheck, FaClock, FaHeart } from "react-icons/fa6";
 import DeleteButton from "@/components/DeleteButton";
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppContext } from "@/utils/appContext";
 
 interface Props {
@@ -24,7 +24,7 @@ interface Props {
 
 export default function Item({ name, status, votes, url }: Props) {
   const path = usePathname();
-  const { isUpvoting, setIsUpvoting } = useAppContext();
+  const { isUpvoting, setIsUpvoting, filter } = useAppContext();
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
@@ -47,6 +47,7 @@ export default function Item({ name, status, votes, url }: Props) {
     }
   };
 
+  if (filter.includes(status)) {
   return (
     <ItemWrapper>
       <InfoContainer>
@@ -71,15 +72,13 @@ export default function Item({ name, status, votes, url }: Props) {
           <h3>{votes}</h3>
         </ContentRow>
       </InfoContainer>
-      <InfoContainer>
-        {status === "Done" ? (
+      {status === "Done" && (
+        <InfoContainer>
           <a href={url} target="_blank">
             {url}
           </a>
-        ) : (
-          <p></p>
-        )}
-      </InfoContainer>
+        </InfoContainer>
+      )}
     </ItemWrapper>
-  );
+  );}
 }

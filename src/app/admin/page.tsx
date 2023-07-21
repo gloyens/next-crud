@@ -3,6 +3,7 @@ import ItemList from "@/components/ItemList";
 
 import { cookies } from 'next/headers'
 import { PageWrapper } from "../styles";
+import Filter from "@/components/Filter";
 
 export default function Admin() {
   if (cookies().get("passwordCookie")?.value === process.env.ADMIN_PASSWORD) {
@@ -10,6 +11,7 @@ export default function Admin() {
       <PageWrapper>
         <h1>Admin Panel</h1>
         <EditItem />
+        <Filter />
         <ItemList />
       </PageWrapper>
     );

@@ -3,8 +3,13 @@ main.PageWrapper {
   width: 100%;
   max-width: 640px;
   margin: auto;
+  padding: 50px 0;
 }
 
 main.PageWrapper h1 {
   margin: 40px 50px 20px;
+}
+
+main.PageWrapper p {
+  margin: 0 50px 20px;
 }

@@ -1,5 +1,5 @@
 import { kv } from "@vercel/kv";
-import Item from "../Item";
+import Item from "@/components/Item";
 import { ItemListWrapper } from "./styles";
 import { ItemData } from "@/utils/types";
 
@@ -27,8 +27,8 @@ export default async function ItemList() {
             votes={itemData.votes}
             url={itemData.url}
           />
-        );
-      })}
+        );})
+      }
     </ItemListWrapper>
   );
 }
