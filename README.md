@@ -1,10 +1,10 @@
-# Icon Voter
+# 🎨 Icon Voter
 ### Live website: https://next-crud-gloyens.vercel.app
 
 ## What is this project?
 I make icon packs over at [rhosgfx.itch.io](https://rhosgfx.itch.io), and this website exists to allow people to vote on which icons they'd like to see next. Users can filter based on whether the icon is done, not done or in progress.
 
-[TODO: ADD VIDEO HERE]
+**`[video pending]`**
 
 Unfortunately it's just a proof of concept for now, as I'm using Vercel KV, which limits hobby plans to 3000 requests per day. Even while testing it's quite easy to hit the limit!
 
@@ -19,20 +19,22 @@ In a similar vein, Vercel's KV only allows for 3000 requests per day, which I wa
 
 ## How it works
 
-[TODO]
+This website uses Next 13 with Typescript and the /app router, hosted on Vercel. It uses Vercel KV to store data.
 
-```
-This website uses Next 13 with Typescript and the /app router, hosted on Vercel. 
-A markdown file holds the content for each album, as well as all the data necessary to complete the page; specifically:
-- 📛 **Title**
-- 0️⃣ **Index** (ordered by release date)
-- 🎵 **BandcampCode** - link to the album on Bandcamp
-- 👉 **NextAlbums** - whichever albums the user should be directed to next
+### 🤖 Filters
 
-This is all accessed through Frontmatter, and makes it extremely easy to change the various paths of the flowchart.
+Filters work through a context provider, which can be described as a file that wraps around the entire app, allowing the variables it holds to be used across all components. The catch is that it only works with *client* components - Next uses server components by default - but since both the filter and the items themselves are client components, it works fine.
 
-Pages are built from traditional React components as well as with **[CSS Components](https://www.css-components.net/)**.
-```
+I'd rather have rendered them at the level of the list which contains all the items, which would have made for cleaner code - and I may still refactor it - but this solution works well.
+
+### 👮‍♀️ Admin Panel
+
+The authentication for this app doesn't need to be particularly robust, so it's about as simple as it can possibly be:
+- The user enters their password at `/login`, which is stored at a cookie
+- The page is redirected to `/admin`
+- The `/admin` page checks the cookie against a hidden environment variable
+- If they match, the admin content is rendered; otherwise access is denied.
+This makes is laughably vulnerable to attackers, but breaking into the admin panel would not reveal any sensitive information. This app exists as proof of concept; the authentication is only present to prevent people I share the page with from messing with the data. In the future I will use a package like **[`next-auth`](https://www.npmjs.com/package/next-auth)**.
 
 ## Future Plans
 Besides the issues below, there's a few things I want to do:
