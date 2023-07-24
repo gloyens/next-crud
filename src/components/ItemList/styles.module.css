@@ -1,6 +1,6 @@
 ul.ItemListWrapper {
   display: grid;
-  gap: 16px;
+  gap: 8px;
 
   margin: 20px;
 
@@ -10,4 +10,8 @@ ul.ItemListWrapper {
 ul.ItemListWrapper::-webkit-scrollbar {
   width: 0px;
   background: transparent;
+}
+
+ul.ItemListWrapper a {
+  text-decoration: none;
 }

@@ -3,19 +3,49 @@ li.ItemWrapper {
   flex-direction: column;
 
   list-style-type: none;
-  border-top: 2px dotted black;
-  padding: 20px 24px 8px;
+
+  background-color: #f6f6f6;
+  border-radius: 8px;
+  padding: 16px 20px;
+
+  color: #333;
 
   position: relative;
 }
 
+li.ItemWrapper_Done {
+  background-color: #cee6ce88;
+  border: 1px solid #60b860;
+}
+
+li.ItemWrapper_InProgress {
+  background-color: #f3f3f388;
+  border: 1px solid #f6f6f6;
+}
+
+/* li.ItemWrapper_NotDone {} */
+
 li.ItemWrapper h2 {
   text-transform: capitalize;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 div.InfoContainer {
   display: flex;
   justify-content: space-between;
+}
+
+a.ItemLink {
+  font-size: 14px;
+  color: #1d691d;
+  text-decoration: none;
+  opacity: 0.75;
+  transition: 0.2s;
+}
+
+a.ItemLink:hover {
+  opacity: 1;
 }
 
 div.ContentRow {
@@ -57,7 +87,7 @@ span.InProgressIcon {
   display: flex;
   align-items: center;
 
-  color: #bbb;
+  color: #bdbdbd;
 }
 
 span.DoneIcon {

@@ -13,7 +13,7 @@ const AppContext = createContext<ContextProps>({} as ContextProps);
 
 const AppContextProvider = ({ children }: { children?: React.ReactNode }) => {
   const [isUpvoting, setIsUpvoting] = useState(false);
-  const [filter, setFilter] = useState<string[]>(["Done", "In Progress", "Not Done"]);
+  const [filter, setFilter] = useState<string[]>(["Not Done"]);
 
   return (
     <AppContext.Provider

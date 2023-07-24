@@ -19,10 +19,10 @@ export default function Filter() {
   return (
     <FilterWrapper>
       <FilterItem
-        onClick={() => handleFilterToggle("Done")}
-        active={filter.includes("Done")}
+        onClick={() => handleFilterToggle("Not Done")}
+        active={filter.includes("Not Done")}
       >
-        Done
+        Not Done
       </FilterItem>
       <FilterItem
         onClick={() => handleFilterToggle("In Progress")}
@@ -31,10 +31,10 @@ export default function Filter() {
         In Progress
       </FilterItem>
       <FilterItem
-        onClick={() => handleFilterToggle("Not Done")}
-        active={filter.includes("Not Done")}
+        onClick={() => handleFilterToggle("Done")}
+        active={filter.includes("Done")}
       >
-        Not Done
+        Done
       </FilterItem>
     </FilterWrapper>
   );
